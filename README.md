@@ -10,7 +10,7 @@
 npm i
 ```
 
-### Second, you can do type 'npm run start'
+### Second, you can do type 'npm run start'.
 ```
 npm run start
 ```
