@@ -1,5 +1,7 @@
 const axios = require("axios");
 
+var Iconv  = require('iconv').Iconv;
+
 buildURL4Joongang = (nowPage, keyWord, includeKeyWord, excludeKeyWord) => {
   
   let includeUri, excludeUri = "";
@@ -19,11 +21,39 @@ buildURL4Joongang = (nowPage, keyWord, includeKeyWord, excludeKeyWord) => {
   return url
 }
 
-module.exports.getHTML = async(URL) => {
+changeEncoding = (content, asIs, toBe) => {
+  return new Promise(async(resolve, reject) => {
+    try {
+      var encode = new Iconv(asIs, `${toBe}//translit//ignore`);
+
+      resolve(encode.convert(content, toBe).toString())
+    } catch (e) {
+      console.log(e)
+      reject(e)
+    }
+  })
+}
+
+getHTML = async(URL) => {
   try {
     return await axios.get(URL)
   } catch (e) {
     console.log(e)
     return e
   }
+}
+
+getHTML4Naver = async(URL) => {
+  return await axios.request({
+    method: 'GET',
+    url: URL,
+    responseType: 'arraybuffer',
+    responseEncoding: 'binary'
+  })
+}
+
+module.exports = {
+  getHTML
+  , getHTML4Naver
+  , changeEncoding
 }
