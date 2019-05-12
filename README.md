@@ -22,16 +22,15 @@ npm run start
 
 #### comment
 ##### If you have error when you npm install, follow below step.
-###### 1. Install Python v2.7.x
-###### 2. Install 'node-gyp' to global
+###### 1. Install 'node-gyp' to global.
 ```
 npm install -g node-gyp
 ```
-###### 3. Install 'microsoft build tool'
+###### 3. Install 'microsoft build tool'.
 ```
 npm install -g --production windows-build-tools
 ```
-###### 4. Install 'iconv'
+###### 4. Retry to install dependencies.
 ```
-npm install iconv
+npm i
 ```
