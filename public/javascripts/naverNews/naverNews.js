@@ -69,6 +69,7 @@ doNaverURLCrawling = () => {
 }
 
 doNaverChildrenURLCrawling = () => {
+  // it have bug that is insert subpage URL under main manu infos
   return new Promise(async(resolve, reject) => {
     try {
       let index = 0
